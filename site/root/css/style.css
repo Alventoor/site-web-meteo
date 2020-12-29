@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #F8F9FA;
+}
+
+nav {
+    background-color: #F47D43;
+}
+
+p {
+    text-align: justify;
+}
+
+#press, #hum {
+    font-size: 1.5em;
+}
+
+#temp {
+    font-size: 3.2em;
+}
+
+#donnees {
+    /** On ne souhaite pas afficher ce bloc avant d'avoir reçu les données */
+    display: none;
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- Active le design responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href='css/style.css' />
+
+    <title>Visualisation données climatiques</title>
+  </head>
+
+  <body>
+    <!-- Barre de navigation -->
+    
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <a class="navbar-brand" href="#">Accueil</a>
+
+        <!-- Permet de rassembler la navigation sous un menu -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#visu" aria-controls="visu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="visu">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="visualisation-direct.html">Visualisation en direct</a>
+                <a class="nav-item nav-link" href="visualisation-evolution.html">Évolution des températures</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main role="main" class="container">
+        <div class="row">
+            <div class="jumbotron mt-5 mb-0">
+                <h1>Bienvenue</h1>
+                <hr>
+                <p class="lead">
+                    Ce site a été conçu pour vous permettre de visualiser les données météorologiques de
+                    différents endroits de France. Pour cela rien de plus simple, il vous suffit de sélectionner
+                    depuis le menu l'un des deux modes de visualisation.
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="jumbotron col-sm mr-md-3 mt-md-5 mb-md-4 mb-0">
+                <h4>Visualisation en direct</h4>
+                <hr>
+                <p class="lead">
+                    Cette page vous permet de visualiser les toutes dernières données météorologiques
+                    d'un lieu. Les données affichées sont reçues en temps réel sans qu'aucun rafraîchissement
+                    de la page ne soit nécessaire.
+                </p>
+            </div>
+            
+            <div class="jumbotron col-sm ml-md-3 mt-md-5 mb-4">
+                <h4>Évolution des températures</h4>
+                <hr>
+                <p class="lead">
+                    Cette page vous permet de visualiser les données météorologiques sous forme de
+                    graphique sur une période choisie.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

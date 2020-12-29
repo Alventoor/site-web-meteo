@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- Active le design responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href='css/style.css' />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script src="js/base.js" type="text/javascript"></script>
+    <script src="js/meteogramme.js" type="text/javascript"></script>
+    <script src="js/evolution.js" type="text/javascript"></script>
+
+    <title>Visualisation données climatiques</title>
+  </head>
+
+  <body>
+    <!-- Barre de navigation -->
+
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <a class="navbar-brand" href="index.html">Accueil</a>
+
+        <!-- Permet de rassembler la navigation sous un menu -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#visu" aria-controls="visu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="visu">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="visualisation-direct.html">Visualisation en direct</a>
+                <a class="nav-item nav-link active" href="#">Évolution des températures</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main role="main" class="container mt-5">
+
+        <!-- Formulaire de l'adresse -->
+
+        <h4>Saisir l'adresse</h4>
+        <form id="choixAdresse">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="region" class="mt-2">Région</label>
+                    <select id="region" class="custom-select">
+                        <option value="" selected>Sélectionnez une région</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="departement" class="mt-2">Département</label>
+                    <select id="departement" class="custom-select">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="ville" class="mt-2">Ville</label>
+                    <select id="ville" class="custom-select">
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="immeuble" class="mt-2">Immeuble</label>
+                    <select id="immeuble" class="custom-select">
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <!-- Formulaire du choix de la période -->
+
+        <div class="row mt-5">
+            <form id="choixPeriode" class="col-lg-4 col-md-6 mt-3">
+                <h4>Visualiser les données sur</h4>
+                <div class="row">
+                    <div class="col-sm-6 mt-2">
+                        <input type="radio" id="radioAnnee" name="periode" value="annee" checked>
+                        <label for="radioAnnee">une année</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mt-2">
+                        <input type="radio" id="radioMois" name="periode" value="mois">
+                        <label for="radioMois">un mois</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mt-2">
+                        <input type="radio" id="radioSemaine" name="periode" value="semaine">
+                        <label for="radioSemaine">une semaine</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mt-2">
+                        <input type="radio" id="radioJour" name="periode" value="jour">
+                        <label for="radioJour">une journée</label>
+                    </div>
+                </div>
+            </form>
+            <div class="d-none d-lg-block col-lg-4 mt-3">
+                <hr>
+            </div>
+            <form id="choixDate" class="col-lg-4 col-md-6 mt-md-3 mt-5 mb-5">
+                <h4>Choisir la date</h4>
+                <label for="annee" id="labelAnnee" class="mt-2">Année</label>
+                <select id="annee" class="custom-select">
+                    <option value="">Veuillez sélectionner un immeuble</option>
+                </select>
+                <label for="mois" id="labelMois" class="mt-2">Mois</label>
+                <select id="mois" class="custom-select">
+                    <option value="" selected>Veuillez sélectionner une année</option>
+                    <option value="01">Janvier</option>
+                    <option value="02">Février</option>
+                    <option value="03">Mars</option>
+                    <option value="04">Avril</option>
+                    <option value="05">Mai</option>
+                    <option value="06">Juin</option>
+                    <option value="07">Juillet</option>
+                    <option value="08">Août</option>
+                    <option value="09">Septembre</option>
+                    <option value="10">Octobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Décembre</option>
+                </select>
+                <label for="semaine" id="labelSemaine" class="mt-2">Semaine</label>
+                <select id="semaine" class="custom-select">
+                    <option value="">Veuillez sélectionner un mois</option>
+                </select>
+                <label for="jour" id="labelJour" class="mt-2">Date</label>
+                <!-- On force l'affichage en tant que bloc -->
+                <div>
+                    <input type="date" id="jour">
+                </div>
+            </form>
+        </div>
+
+        <!-- Bloc Contenant le météogramme -->
+        <div id="donnees">
+            <div class="row">
+                <div class="jumbotron w-100 mt-0">
+                    <div id="meteogramme">
+                    </div>
+                    <div class="row mt-3 text-center">
+                        <div class="col-sm-4">
+                            <input type="radio" id="donneesMax" name="donnees" value="max">
+                            <label for="donneesMax">Voir maximales</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="radio" id="donneesMoy" name="donnees" value="moy" checked>
+                            <label for="donneesMoy">Voir moyennes</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="radio" id="donneesMin" name="donnees" value="min">
+                            <label for="donneesMin">Voir minimales</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
